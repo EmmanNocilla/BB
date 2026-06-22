@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty B by Bernice — Lashes, Nails & Brows · Mosta, Malta</title>
+<meta name="description" content="Beauty B by Bernice — a cosy private studio in Mosta, Malta for lash extensions, nails, brows, lash lifts and make up. By appointment. Book online.">
+<meta property="og:title" content="Beauty B by Bernice — Lashes, Nails & Brows">
+<meta property="og:description" content="A little corner of calm in Mosta, Malta. Lashes, nails & brows perfected with patience and care. Book your appointment online.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FCF2EF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush-bg:#FCF2EF;
+    --blush-deep:#F7E1DB;
+    --blush-mist:#FBEAE6;
+    --cream:#FFFBF9;
+    --rose:#A13A52;
+    --rose-dark:#7E2E42;
+    --plum:#6B3A4A;
+    --gold-1:#EBCFA8;
+    --gold-2:#D4A574;
+    --gold-3:#C19463;
+    --pink-soft:#E7A0A8;
+    --ink:#4A2E33;
+    --ink-soft:#876065;
+    --line:rgba(161,58,82,.16);
+    --gold-grad:linear-gradient(115deg,#C19463 0%,#EBCFA8 38%,#D4A574 64%,#B5895A 100%);
+    /* Soft-UI shadow scale (softer than flat, clearer than neumorphism) */
+    --sh-1:0 2px 6px -2px rgba(126,46,66,.12);
+    --sh-2:0 14px 34px -22px rgba(126,46,66,.40);
+    --sh-3:0 26px 60px -30px rgba(126,46,66,.50);
+    --shadow-soft:0 24px 60px -28px rgba(126,46,66,.40);
+    --shadow-card:0 18px 50px -30px rgba(126,46,66,.55);
+    --serif:"Cormorant",Georgia,serif;
+    --script:"Parisienne",cursive;
+    --sans:"Jost",-apple-system,sans-serif;
+    /* Emil-style strong easing curves */
+    --ease:cubic-bezier(.23,1,.32,1);          /* ease-out, for entrances & hovers */
+    --ease-in-out:cubic-bezier(.77,0,.175,1);  /* on-screen movement */
+    --gold-ink:#8A5E32;  /* AA-legible gold for small label text */
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--blush-bg);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--pink-soft);color:#fff}
+  a{cursor:pointer}
+  button{cursor:pointer}
+  img{display:block;max-width:100%}
+  /* visible focus for keyboard users */
+  a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
+  [tabindex]:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:6px}
+
+  /* atmospheric background */
+  .atmos{position:fixed;inset:0;z-index:-2;overflow:hidden}
+  .atmos::before,.atmos::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+  .atmos::before{width:55vw;height:55vw;left:-12vw;top:-10vw;
+    background:radial-gradient(circle at 30% 30%,#F6CFC8,transparent 70%)}
+  .atmos::after{width:50vw;height:50vw;right:-12vw;bottom:-8vw;
+    background:radial-gradient(circle at 60% 40%,#F0D7BC,transparent 70%)}
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* sparkles */
+  .spark{position:absolute;pointer-events:none;color:var(--gold-2);
+    animation:tw 4s ease-in-out infinite}
+  .spark svg{display:block}
+  @keyframes tw{0%,100%{opacity:.15;transform:scale(.7) rotate(0)}50%{opacity:.9;transform:scale(1.15) rotate(20deg)}}
+
+  .wrap{max-width:var(--maxw);margin:0 auto}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,64px);
+    transition:padding .4s var(--ease),background .4s var(--ease),box-shadow .4s var(--ease),backdrop-filter .4s var(--ease);}
+  nav.scrolled{padding:12px clamp(20px,5vw,64px);
+    background:rgba(252,242,239,.82);backdrop-filter:blur(14px);
+    box-shadow:0 1px 0 var(--line),0 10px 30px -24px rgba(126,46,66,.6)}
+  .brand{display:flex;flex-direction:column;line-height:.85;text-decoration:none}
+  .brand b{font-family:var(--serif);font-weight:600;font-size:1.55rem;
+    letter-spacing:.04em;color:var(--rose);font-style:italic}
+  .brand span{font-family:var(--script);font-size:1.05rem;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-top:-2px;padding-left:2px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    text-decoration:none;color:var(--ink-soft);font-weight:500;position:relative;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;
+    background:var(--gold-grad);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .nav-links a:hover{color:var(--rose)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .btn{font-family:var(--sans);cursor:pointer;border:none;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;font-weight:500;border-radius:999px;
+    transition:transform .18s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none}
+  .btn:active{transform:scale(.97)}
+  .btn svg{width:15px;height:15px}
+  .btn-gold{padding:13px 26px;background:var(--gold-grad);color:#fff;
+    box-shadow:0 10px 26px -12px rgba(193,148,99,.9)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(193,148,99,1)}
+  .btn-rose{padding:13px 26px;background:var(--rose);color:#fff}
+  .btn-rose:hover{background:var(--rose-dark);transform:translateY(-2px);box-shadow:var(--sh-2)}
+  .btn-ghost{padding:13px 26px;background:transparent;color:var(--rose);
+    box-shadow:inset 0 0 0 1px var(--line)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--rose);background:rgba(161,58,82,.04)}
+  .btn-lg{padding:16px 32px;font-size:.78rem}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-phone{font-size:.78rem;letter-spacing:.06em;color:var(--ink-soft);text-decoration:none;white-space:nowrap;transition:color .3s}
+  .nav-phone:hover{color:var(--rose)}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+  .burger span{display:block;width:24px;height:2px;background:var(--rose);border-radius:2px;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  header{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
+    gap:40px;padding:130px clamp(20px,5vw,64px) 70px;position:relative;max-width:var(--maxw);margin:0 auto}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px;
+    font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-ink);font-weight:500}
+  .hero-eyebrow::before{content:"";width:42px;height:1px;background:var(--gold-grad)}
+  .hero h1{font-family:var(--serif);font-weight:500;line-height:.9;color:var(--rose);
+    font-size:clamp(3.4rem,8vw,6.2rem);font-style:italic;letter-spacing:.01em;text-wrap:balance}
+  .hero h1 .script{display:block;font-family:var(--script);font-style:normal;font-weight:400;
+    font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.01em;margin-top:-.1em;margin-left:.06em;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{max-width:30rem;margin:26px 0 6px;color:var(--ink-soft);font-size:1.06rem;font-weight:300}
+  .hero-loc{display:flex;align-items:center;gap:8px;margin:14px 0 30px;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+  .hero-loc svg{width:15px;height:15px;fill:var(--gold-3)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-cta .small{font-size:.82rem;color:var(--ink-soft);letter-spacing:.04em}
+  .hero-cta .small a{color:var(--rose);text-decoration:none;font-weight:500}
+  /* trust chip below hero CTA */
+  .hero-trust{display:flex;align-items:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+  .stars{display:inline-flex;gap:2px}
+  .stars svg{width:16px;height:16px;fill:var(--gold-2)}
+  .hero-trust .rt{font-size:.84rem;color:var(--ink-soft)}
+  .hero-trust .rt b{color:var(--ink);font-weight:500}
+  .hero-trust .divider{width:1px;height:26px;background:var(--line)}
+
+  /* hero art */
+  .hero-art{position:relative;display:grid;place-items:center;min-height:480px}
+  .hero-art .art-ring,.hero-art .hero-lashes{grid-column:1;grid-row:1}
+  .art-ring{position:relative;width:min(36vw,420px);aspect-ratio:1;border-radius:50%;z-index:1;
+    background:radial-gradient(circle at 50% 44%,rgba(246,207,198,.6),rgba(252,242,239,0) 70%)}
+  .art-ring::before{content:"";position:absolute;inset:-16px;border-radius:50%;
+    border:1px solid var(--line);animation:spin 40s linear infinite}
+  .art-ring::after{content:"";position:absolute;inset:-30px;border-radius:50%;
+    border:1px dashed rgba(193,148,99,.4)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* high-res gold lash image; white background dropped via multiply blend (no quality loss) */
+  .hero-lashes{z-index:2;width:min(520px,96%);height:auto;pointer-events:none;mix-blend-mode:multiply}
+  .hero-art .sprig{z-index:3}
+  .hero-art .art-badge{z-index:4}
+  .sprig{position:absolute;width:120px;opacity:.85}
+  .sprig.s1{top:-6%;right:-4%;transform:rotate(18deg)}
+  .sprig.s2{bottom:-2%;left:-8%;transform:rotate(-150deg)}
+  .sprig path{fill:none;stroke:var(--gold-2);stroke-width:1.4;stroke-linecap:round}
+  .sprig .leaf{fill:rgba(231,160,168,.55);stroke:none}
+  /* floating mini-card on hero art */
+  .art-badge{position:absolute;background:var(--cream);border-radius:16px;padding:14px 18px;
+    box-shadow:var(--sh-3);display:flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.7)}
+  .art-badge.b1{top:8%;left:-6%;animation:float 6s ease-in-out infinite}
+  .art-badge.b2{bottom:6%;right:-4%;animation:float 6s ease-in-out infinite .8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .art-badge .ab-ic{width:34px;height:34px;border-radius:50%;background:var(--blush-mist);
+    display:grid;place-items:center;flex:none}
+  .art-badge .ab-ic svg{width:18px;height:18px;stroke:var(--rose);fill:none;stroke-width:1.7}
+  .art-badge b{font-family:var(--serif);font-style:italic;color:var(--rose);font-size:1.05rem;display:block;line-height:1.1}
+  .art-badge span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* ---------- TRUST STRIP ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:rgba(255,251,249,.5)}
+  .strip-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);
+    gap:clamp(16px,2.4vw,30px);padding:clamp(42px,5vw,62px) clamp(20px,5vw,64px)}
+  .strip-item{margin:0;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .strip-stage{width:100%;aspect-ratio:1.2/1;border-radius:22px;overflow:hidden;position:relative;
+    display:grid;place-items:center;box-shadow:var(--sh-2);border:1px solid rgba(255,255,255,.7);
+    background:radial-gradient(120% 120% at 50% 28%,var(--blush-mist),var(--cream) 72%)}
+  .strip-stage::after{content:"";position:absolute;inset:0;border-radius:22px;pointer-events:none;
+    box-shadow:inset 0 -34px 44px -32px rgba(126,46,66,.20)}
+  .strip-stage img{width:88%;height:88%;object-fit:contain;
+    filter:drop-shadow(0 12px 16px rgba(126,46,66,.16));transition:transform .6s var(--ease)}
+  .strip-item figcaption{margin-top:16px}
+  .strip-item b{display:block;font-family:var(--serif);font-style:italic;font-weight:600;
+    font-size:1.2rem;color:var(--rose);letter-spacing:.01em;margin-bottom:1px}
+  .strip-item span{font-size:.82rem;color:var(--ink-soft);font-weight:300}
+  @media(hover:hover){.strip-item:hover .strip-stage img{transform:scale(1.06) translateY(-3px)}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px);position:relative}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto clamp(46px,6vw,72px)}
+  .kicker{display:inline-flex;align-items:center;gap:12px;
+    font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-ink);font-weight:500;margin-bottom:16px}
+  .kicker::before,.kicker::after{content:"";width:28px;height:1px;background:var(--gold-grad)}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-style:italic;
+    font-size:clamp(2.4rem,5vw,3.6rem);color:var(--rose);line-height:1.02}
+  .sec-head p{color:var(--ink-soft);margin-top:14px;font-weight:300}
+
+  /* ---------- SERVICES · ATELIER MENU ---------- */
+  .atelier{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;max-width:1140px;margin:0 auto}
+  .svc{position:relative;border-radius:26px;padding:40px 38px 34px;overflow:hidden;
+    transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+  .svc>*{position:relative;z-index:1}
+  .svc-num{position:absolute;top:20px;right:30px;z-index:0;font-family:var(--serif);font-style:italic;
+    font-weight:600;font-size:3.4rem;line-height:1;letter-spacing:-.02em;color:var(--gold-2);
+    opacity:.5;pointer-events:none}
+  .svc-eyebrow{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-ink);
+    font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .svc-eyebrow::before{content:"";width:20px;height:1px;background:var(--gold-grad)}
+  .svc h3{font-family:var(--serif);font-weight:600;font-style:italic;font-size:1.85rem;color:var(--rose);
+    letter-spacing:.01em;line-height:1.05}
+  .svc-sub{font-size:.84rem;color:var(--ink-soft);font-style:italic;font-weight:300;margin:6px 0 2px;max-width:32rem}
+
+  .tier{margin-top:22px}
+  .tier-label{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--plum);font-weight:600;display:flex;align-items:center;gap:12px;margin:0 0 2px}
+  .tier-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  .prc{display:flex;align-items:flex-end;gap:10px;padding:9px 0 9px 18px;position:relative}
+  .prc::before{content:"◆";position:absolute;left:0;bottom:11px;color:var(--gold-2);font-size:.6rem;
+    opacity:0;transform:translateX(-4px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .prc:hover::before{opacity:1;transform:translateX(0)}
+  .prc .nm{color:var(--ink);font-size:.97rem;font-weight:300;line-height:1.3;
+    transition:transform .35s var(--ease)}
+  .prc:hover .nm{transform:translateX(8px)}
+  .prc .ldr{flex:1;border-bottom:1px dotted rgba(161,58,82,.22);transform:translateY(-5px)}
+  .prc .amt{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.24rem;color:var(--rose);white-space:nowrap}
+
+  /* cream cards */
+  .svc-cream{background:var(--cream);box-shadow:var(--sh-2);border:1px solid rgba(255,255,255,.7)}
+  .svc-cream:hover{transform:translateY(-6px);box-shadow:var(--sh-3)}
+  .svc-cream::after{content:"";position:absolute;left:38px;right:38px;top:0;height:2px;z-index:0;
+    background:var(--gold-grad);opacity:.85;border-radius:0 0 2px 2px}
+
+  /* feature · signature (inverted) */
+  .svc-feature{grid-column:span 7;color:#fff;box-shadow:var(--shadow-soft);isolation:isolate;
+    background:
+      radial-gradient(130% 120% at 88% 6%,rgba(235,207,168,.24),transparent 52%),
+      linear-gradient(152deg,var(--rose) 0%,var(--rose-dark) 68%,#5b2233 100%)}
+  .svc-feature:hover{transform:translateY(-6px);box-shadow:0 36px 76px -30px rgba(91,34,51,.75)}
+  .svc-feature .svc-num{opacity:.32}
+  .svc-feature h3{color:#fff}
+  .svc-feature .svc-eyebrow{color:var(--gold-1)}
+  .svc-feature .svc-eyebrow::before{background:linear-gradient(90deg,var(--gold-1),transparent)}
+  .svc-feature .svc-sub{color:rgba(255,255,255,.8)}
+  .feat-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 30px;margin-top:26px}
+  .feat-tiers .tier{margin-top:0}
+  .svc-feature .tier-label{color:var(--gold-1)}
+  .svc-feature .tier-label::after{background:linear-gradient(90deg,rgba(235,207,168,.45),transparent)}
+  .svc-feature .prc .nm{color:rgba(255,255,255,.9)}
+  .svc-feature .prc .ldr{border-bottom-color:rgba(255,255,255,.22)}
+  .svc-feature .prc .amt{color:var(--gold-1)}
+  .svc-feature .prc::before{color:var(--gold-1)}
+  .monogram{position:absolute;right:-4px;bottom:-48px;z-index:0;font-family:var(--script);font-size:13rem;
+    line-height:1;color:rgba(255,255,255,.06);pointer-events:none;user-select:none}
+
+  .svc-nails{grid-column:span 5}
+  .svc-row4{grid-column:span 3}
+
+  .note{margin-top:18px;font-size:.76rem;color:var(--gold-ink);font-style:italic;display:flex;gap:8px;align-items:flex-start}
+  .note svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:var(--gold-3);fill:none;stroke-width:1.6}
+  .menu-cta{text-align:center;margin-top:46px}
+
+  @media(max-width:980px){
+    .svc-feature,.svc-nails{grid-column:span 12}
+    .svc-row4{grid-column:span 6}
+  }
+  @media(max-width:560px){
+    .atelier{grid-template-columns:1fr;gap:18px}
+    .svc-feature,.svc-nails,.svc-row4{grid-column:auto}
+    .svc{padding:32px 26px 28px}
+    .feat-tiers{grid-template-columns:1fr;gap:18px}
+    .svc-num{font-size:2.8rem;top:18px;right:22px}
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;
+    grid-auto-flow:dense;max-width:1140px;margin:0 auto}
+  .tile{position:relative;margin:0;border-radius:18px;overflow:hidden;cursor:pointer;background:var(--blush-mist);
+    box-shadow:var(--sh-2);display:flex;align-items:flex-end;
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .tile.tall{grid-row:span 2}
+  .tile-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;
+    transition:transform .7s var(--ease)}
+  @media(hover:hover){
+    .tile:hover{transform:translateY(-6px);box-shadow:var(--sh-3)}
+    .tile:hover .tile-img{transform:scale(1.06)}
+  }
+  .tile .cap{position:relative;z-index:2;padding:16px 18px;width:100%;
+    background:linear-gradient(to top,rgba(74,46,51,.72),rgba(74,46,51,.05) 72%,transparent);color:#fff}
+  .tile .cap b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.15rem;display:block}
+  .tile .cap span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:.9}
+  .gallery-note{text-align:center;margin-top:28px;font-size:.82rem;color:var(--ink-soft);font-style:italic;font-weight:300}
+  .gallery-note a{color:var(--rose);text-decoration:none;font-weight:500}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin:0 auto}
+  .quote{background:var(--cream);border-radius:20px;padding:32px 30px;box-shadow:var(--sh-2);
+    border:1px solid rgba(255,255,255,.6);display:flex;flex-direction:column;gap:14px}
+  .quote .stars svg{width:15px;height:15px}
+  .quote p{font-family:var(--serif);font-style:italic;font-size:1.18rem;line-height:1.45;color:var(--plum)}
+  .quote .by{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .quote .av{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-family:var(--serif);font-style:italic;font-weight:600;color:#fff;font-size:1.1rem}
+  .quote .by b{font-size:.92rem;color:var(--ink);font-weight:500;display:block}
+  .quote .by span{font-size:.74rem;color:var(--ink-soft)}
+
+  /* ---------- BOOKING ---------- */
+  .book-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:.82fr 1.18fr;
+    gap:0;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-soft);background:var(--cream)}
+  .book-aside{background:linear-gradient(150deg,var(--rose),var(--rose-dark));color:#fff;
+    padding:48px 42px;position:relative;overflow:hidden}
+  .book-aside::after{content:"";position:absolute;right:-40px;bottom:-40px;width:200px;height:200px;
+    border-radius:50%;border:1px solid rgba(255,255,255,.18)}
+  .book-aside .script{font-family:var(--script);font-size:2.4rem;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .book-aside h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:2rem;margin:6px 0 18px;line-height:1.05}
+  .book-aside p{font-size:.95rem;opacity:.9;font-weight:300;line-height:1.7}
+  .steps{list-style:none;margin-top:28px;display:grid;gap:18px}
+  .steps li{display:flex;gap:14px;align-items:flex-start}
+  .steps .sn{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
+    background:rgba(255,255,255,.14);font-family:var(--serif);font-style:italic;font-weight:600;font-size:.95rem;
+    box-shadow:inset 0 0 0 1px rgba(235,207,168,.5)}
+  .steps li b{font-size:.95rem;font-weight:500;display:block;margin-bottom:1px}
+  .steps li span{font-size:.84rem;opacity:.85;font-weight:300;line-height:1.5}
+  .aside-foot{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);
+    display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .aside-foot a{color:#fff;text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:10px;opacity:.92;transition:opacity .3s}
+  .aside-foot a:hover{opacity:1}
+  .aside-foot svg{width:17px;height:17px;stroke:var(--gold-1);fill:none;stroke-width:1.7;flex:none}
+
+  .book-main{padding:40px 42px 46px}
+  .book-field{margin-bottom:22px}
+  .book-field label{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:9px;font-weight:500}
+  .sel-wrap{position:relative}
+  .sel-wrap::after{content:"";position:absolute;right:18px;top:50%;width:8px;height:8px;
+    border-right:2px solid var(--rose);border-bottom:2px solid var(--rose);
+    transform:translateY(-65%) rotate(45deg);pointer-events:none}
+  .book-field select{width:100%;padding:15px 18px;border-radius:13px;font-family:var(--sans);
+    font-size:.98rem;color:var(--ink);background:var(--blush-bg);appearance:none;
+    border:1px solid var(--line);transition:.3s;outline:none}
+  .book-field select:focus{border-color:var(--rose);background:#fff;box-shadow:0 0 0 4px rgba(161,58,82,.08)}
+
+  /* Cal embed mount */
+  #cal-embed{min-height:560px;border-radius:16px;overflow:hidden;background:var(--blush-bg);
+    border:1px solid var(--line);position:relative}
+  /* graceful placeholder shown until a treatment is chosen / Cal connected */
+  .cal-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:40px;gap:14px}
+  .cal-state .cs-ic{width:64px;height:64px;border-radius:50%;background:var(--blush-mist);display:grid;place-items:center;
+    box-shadow:inset 0 0 0 1px var(--line)}
+  .cal-state .cs-ic svg{width:30px;height:30px;stroke:var(--rose);fill:none;stroke-width:1.5}
+  .cal-state h4{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--rose);font-size:1.5rem}
+  .cal-state p{font-size:.92rem;color:var(--ink-soft);font-weight:300;max-width:30rem}
+  .cal-state.spin .cs-ic svg{animation:spin 1.4s linear infinite}
+  .cal-setup-hint{margin-top:8px;font-size:.78rem;color:var(--gold-ink);background:var(--blush-mist);
+    padding:10px 16px;border-radius:10px;border:1px solid var(--line);max-width:34rem}
+  .cal-setup-hint code{font-family:ui-monospace,Menlo,monospace;background:rgba(161,58,82,.08);
+    padding:1px 6px;border-radius:5px;color:var(--rose-dark);font-size:.82em}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:980px;margin:0 auto}
+  .ccard{text-align:center;padding:38px 24px;background:var(--cream);border-radius:20px;box-shadow:var(--sh-2);
+    border:1px solid rgba(255,255,255,.6);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .ccard:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+  .ccard .ic{width:54px;height:54px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;
+    background:var(--blush-mist);box-shadow:inset 0 0 0 1px var(--line)}
+  .ccard .ic svg{width:24px;height:24px;stroke:var(--rose);fill:none;stroke-width:1.5}
+  .ccard h4{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--rose);font-size:1.3rem;margin-bottom:6px}
+  .ccard a{color:var(--ink);text-decoration:none;font-weight:300;transition:color .3s}
+  .ccard a:hover{color:var(--rose)}
+  .ccard span{display:block;color:var(--ink-soft);font-weight:300;font-size:.92rem}
+
+  footer{text-align:center;padding:60px 24px 44px;position:relative}
+  .foot-rule{width:120px;height:1px;background:var(--gold-grad);margin:0 auto 28px}
+  footer .fbrand{font-family:var(--serif);font-style:italic;font-weight:600;font-size:2rem;color:var(--rose)}
+  footer .fscript{font-family:var(--script);font-size:1.5rem;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .foot-social{display:flex;gap:14px;justify-content:center;margin:22px 0 4px}
+  .foot-social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    background:var(--cream);box-shadow:var(--sh-1);border:1px solid var(--line);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .foot-social a:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
+  .foot-social svg{width:20px;height:20px;stroke:var(--rose);fill:none;stroke-width:1.6}
+  footer .thanks{font-family:var(--script);font-size:1.4rem;color:var(--plum);margin:18px 0 8px}
+  footer small{display:block;color:var(--ink-soft);font-size:.78rem;letter-spacing:.06em;margin-top:6px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .strip-inner{grid-template-columns:repeat(2,1fr);gap:20px}
+    .quotes{grid-template-columns:1fr}
+    .book-wrap{grid-template-columns:1fr}
+  }
+  @media(max-width:900px){
+    .nav-links,.nav-phone{display:none}
+    .burger{display:flex}
+    header{grid-template-columns:1fr;text-align:center;padding-top:120px}
+    .hero-eyebrow,.hero-loc,.hero-cta,.hero-trust{justify-content:center}
+    .hero p.lead{margin-left:auto;margin-right:auto}
+    .hero-art{order:-1;margin-bottom:10px}
+    .menu-grid{grid-template-columns:1fr}
+    .card.wide{grid-template-columns:1fr}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .contact{grid-template-columns:1fr}
+    .mobile-menu.open{display:flex}
+  }
+  @media(max-width:560px){
+    .strip-inner{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
+    .book-aside,.book-main{padding:36px 26px}
+    .art-badge{display:none}
+  }
+  .mobile-menu{display:none;position:fixed;inset:0;z-index:49;background:rgba(252,242,239,.97);
+    backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;gap:30px}
+  .mobile-menu a{font-family:var(--serif);font-style:italic;font-size:1.8rem;color:var(--rose);text-decoration:none}
+
+  /* typography polish */
+  .sec-head h2,.svc h3,.quote p,.book-aside h3{text-wrap:balance}
+  .lead,.svc-sub,.sec-head p,.book-aside p{text-wrap:pretty}
+
+  /* don't leave hover-lifts stuck after a tap on touch devices (Emil) */
+  @media(hover:none){
+    .card:hover,.svc-cream:hover,.svc-feature:hover,.tile:hover,.ccard:hover,
+    .quote:hover,.btn-gold:hover,.btn-rose:hover,.foot-social a:hover{transform:none}
+  }
+
+  /* reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="brand" href="#top"><b>Beauty B</b><span>by Bernice</span></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#book">Booking</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a class="nav-phone" href="tel:+35699263588">+356 9926 3588</a>
+    <a class="btn btn-gold" href="#book">Book Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#book">Booking</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:+35699263588">+356 9926 3588</a>
+</div>
+
+<!-- HERO -->
+<header id="top">
+  <div class="hero">
+    <div class="hero-eyebrow reveal in">Lashes · Nails · Brows</div>
+    <h1 class="reveal in d1">Beauty B<span class="script">by Bernice</span></h1>
+    <p class="lead reveal in d2">A little corner of calm in Mosta where lashes, nails and brows are perfected with patience, precision and a whole lot of love.</p>
+    <div class="hero-loc reveal in d3">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      Mosta, Malta · By appointment
+    </div>
+    <div class="hero-cta reveal in d4">
+      <a class="btn btn-rose btn-lg" href="#book">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Book an appointment
+      </a>
+      <a class="btn btn-ghost btn-lg" href="#services">View the menu</a>
+    </div>
+    <div class="hero-trust reveal in d5">
+      <span class="stars" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg>
+      </span>
+      <span class="rt"><b>Loved by clients</b> across Malta</span>
+      <span class="divider"></span>
+      <span class="rt">One client at a time, <b>full attention</b></span>
+    </div>
+  </div>
+
+  <div class="hero-art reveal in d3">
+    <div class="art-ring" aria-hidden="true"></div>
+    <img class="hero-lashes" src="images/eyelashes.png" alt="A delicate fan of gold gradient lash extensions" fetchpriority="high">
+    <svg class="sprig s1" viewBox="0 0 100 140" aria-hidden="true">
+      <path d="M50 140 C50 100 50 60 52 20"/>
+      <path class="leaf" d="M52 40 C70 34 84 44 80 60 C66 60 54 54 52 40Z"/>
+      <path class="leaf" d="M50 64 C32 58 18 68 22 84 C36 84 48 78 50 64Z"/>
+      <path class="leaf" d="M52 92 C70 86 84 96 80 112 C66 112 54 106 52 92Z"/>
+    </svg>
+    <svg class="sprig s2" viewBox="0 0 100 140" aria-hidden="true">
+      <path d="M50 140 C50 100 50 60 52 20"/>
+      <path class="leaf" d="M52 50 C70 44 84 54 80 70 C66 70 54 64 52 50Z"/>
+      <path class="leaf" d="M50 80 C32 74 18 84 22 100 C36 100 48 94 50 80Z"/>
+    </svg>
+    <!-- floating mini cards -->
+    <div class="art-badge b1" aria-hidden="true">
+      <div><b>Russian Volume</b><span>From €70</span></div>
+    </div>
+    <div class="art-badge b2" aria-hidden="true">
+      <div><b>By appointment</b><span>Cosy private studio</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <figure class="strip-item reveal">
+      <div class="strip-stage"><img src="images/hygiene.png" alt="A sanitising case holding lash and brow tools" loading="lazy"></div>
+      <figcaption><b>Hygienic &amp; careful</b><span>Sanitised tools, every visit</span></figcaption>
+    </figure>
+    <figure class="strip-item reveal d1">
+      <div class="strip-stage"><img src="images/one-to-one.png" alt="Bernice working with one client at a private studio table" loading="lazy"></div>
+      <figcaption><b>One-to-one</b><span>Full attention, no rush</span></figcaption>
+    </figure>
+    <figure class="strip-item reveal d2">
+      <div class="strip-stage"><img src="images/easy-booking.png" alt="A finger tapping a 3:30 PM slot to book online" loading="lazy"></div>
+      <figcaption><b>Easy booking</b><span>Pick your slot online</span></figcaption>
+    </figure>
+    <figure class="strip-item reveal d3">
+      <div class="strip-stage"><img src="images/aftercare.png" alt="An aftercare balm with a little care-guide tag" loading="lazy"></div>
+      <figcaption><b>Aftercare advice</b><span>With every set</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-head reveal">
+    <div class="kicker">Price Menu</div>
+    <h2>Treatments &amp; pricing</h2>
+    <p>Everything is done by Bernice herself. Prices are in euro; a small surcharge applies on Sundays &amp; public holidays.</p>
+  </div>
+
+  <div class="atelier">
+
+    <!-- 01 · Lash Extensions — Signature -->
+    <article class="svc svc-feature reveal">
+      <span class="svc-num">01</span>
+      <div class="svc-eyebrow">Signature · The Eyes</div>
+      <h3>Lash Extensions</h3>
+      <p class="svc-sub">Hand-mapped lash by lash, tailored to your eye shape and styled to last.</p>
+      <div class="feat-tiers">
+        <div class="tier">
+          <div class="tier-label">Classic</div>
+          <div class="prc"><span class="nm">Full Set</span><span class="ldr"></span><span class="amt">€60</span></div>
+          <div class="prc"><span class="nm">Infills</span><span class="ldr"></span><span class="amt">€50</span></div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">Light / Hybrid</div>
+          <div class="prc"><span class="nm">Full Set</span><span class="ldr"></span><span class="amt">€55</span></div>
+          <div class="prc"><span class="nm">Infills</span><span class="ldr"></span><span class="amt">€45</span></div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">Russian Volume</div>
+          <div class="prc"><span class="nm">Full Set</span><span class="ldr"></span><span class="amt">€70</span></div>
+          <div class="prc"><span class="nm">Infills</span><span class="ldr"></span><span class="amt">€60</span></div>
+        </div>
+      </div>
+      <span class="monogram" aria-hidden="true">B</span>
+    </article>
+
+    <!-- 02 · Nails -->
+    <article class="svc svc-cream svc-nails reveal d1">
+      <span class="svc-num">02</span>
+      <div class="svc-eyebrow">The Hands</div>
+      <h3>Nails</h3>
+      <p class="svc-sub">Sculpted gel-acrygel sets built for strength, shaped exactly how you like them.</p>
+      <div class="tier">
+        <div class="tier-label">Full Set · Gel-Acrygel</div>
+        <div class="prc"><span class="nm">Short / Medium</span><span class="ldr"></span><span class="amt">€50</span></div>
+        <div class="prc"><span class="nm">Long / XL</span><span class="ldr"></span><span class="amt">€60</span></div>
+      </div>
+      <div class="tier">
+        <div class="tier-label">Infills · after 3–4 weeks</div>
+        <div class="prc"><span class="nm">Short / Medium</span><span class="ldr"></span><span class="amt">€28</span></div>
+        <div class="prc"><span class="nm">Long / XL</span><span class="ldr"></span><span class="amt">€35</span></div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Infills after 4 weeks are charged at extra cost.</div>
+    </article>
+
+    <!-- 03 · Lash Lift -->
+    <article class="svc svc-cream svc-row4 reveal d2">
+      <span class="svc-num">03</span>
+      <div class="svc-eyebrow">The Eyes</div>
+      <h3>Lash Lift</h3>
+      <p class="svc-sub">Your own lashes, lifted and tinted, wide-eyed for weeks.</p>
+      <div class="tier">
+        <div class="prc"><span class="nm">Lash Lift &amp; Tint</span><span class="ldr"></span><span class="amt">€50</span></div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Recommended every 3–4 weeks.</div>
+    </article>
+
+    <!-- 04 · Gel Toes -->
+    <article class="svc svc-cream svc-row4 reveal d3">
+      <span class="svc-num">04</span>
+      <div class="svc-eyebrow">The Toes</div>
+      <h3>Gel Toes</h3>
+      <p class="svc-sub">A glossy, long-wear gel finish, ready for sandal season.</p>
+      <div class="tier">
+        <div class="prc"><span class="nm">Gel Pedicure Finish</span><span class="ldr"></span><span class="amt">€20</span></div>
+      </div>
+    </article>
+
+    <!-- 05 · Make Up -->
+    <article class="svc svc-cream svc-row4 reveal d2">
+      <span class="svc-num">05</span>
+      <div class="svc-eyebrow">The Face</div>
+      <h3>Make Up</h3>
+      <p class="svc-sub">Polished and photo-ready for the salon or a night out.</p>
+      <div class="tier">
+        <div class="prc"><span class="nm">For Salon</span><span class="ldr"></span><span class="amt">€40</span></div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Sundays &amp; public holidays — €5 extra.</div>
+    </article>
+
+    <!-- 06 · Brows & Facial -->
+    <article class="svc svc-cream svc-row4 reveal d3">
+      <span class="svc-num">06</span>
+      <div class="svc-eyebrow">The Brows</div>
+      <h3>Brows &amp; Facial</h3>
+      <p class="svc-sub">Shape, tint &amp; tidy to frame the face beautifully.</p>
+      <div class="tier">
+        <div class="prc"><span class="nm">Eyebrow Waxing</span><span class="ldr"></span><span class="amt">€7</span></div>
+        <div class="prc"><span class="nm">Waxing + Tint</span><span class="ldr"></span><span class="amt">€10</span></div>
+        <div class="prc"><span class="nm">Upper Lip</span><span class="ldr"></span><span class="amt">€3</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="menu-cta reveal">
+    <a class="btn btn-gold btn-lg" href="#book">Reserve your seat</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work">
+  <div class="sec-head reveal">
+    <div class="kicker">The Portfolio</div>
+    <h2>A look at our work</h2>
+    <p>Real lashes, sets, brows and make up leaving the studio, all done by Bernice.</p>
+  </div>
+  <div class="gallery">
+    <figure class="tile tall reveal"><img class="tile-img" src="images/gallery/g11.jpg" alt="Dramatic mega-volume lash extensions on brown eyes" loading="lazy"><figcaption class="cap"><b>Mega Volume</b><span>Lash Extensions</span></figcaption></figure>
+    <figure class="tile reveal d1"><img class="tile-img" src="images/gallery/g14.jpg" alt="Natural-look glossy almond nails" loading="lazy"><figcaption class="cap"><b>Natural Set</b><span>Gel Overlay</span></figcaption></figure>
+    <figure class="tile reveal d2"><img class="tile-img" src="images/gallery/g08.jpg" alt="Deep wine-red almond gel nails" loading="lazy"><figcaption class="cap"><b>Wine Almond</b><span>Gel-Acrygel</span></figcaption></figure>
+    <figure class="tile reveal d3"><img class="tile-img" src="images/gallery/g05.jpg" alt="Soft glam salon make up with a glossy lip" loading="lazy"><figcaption class="cap"><b>Soft Glam</b><span>Salon Make Up</span></figcaption></figure>
+    <figure class="tile tall reveal"><img class="tile-img" src="images/gallery/g04.jpg" alt="Before and after of natural lashes versus volume lash extensions" loading="lazy"><figcaption class="cap"><b>Before &amp; After</b><span>Lash Extensions</span></figcaption></figure>
+    <figure class="tile reveal d1"><img class="tile-img" src="images/gallery/g10.jpg" alt="Soft pink almond gel nails" loading="lazy"><figcaption class="cap"><b>Soft Pink</b><span>Almond Gel</span></figcaption></figure>
+    <figure class="tile reveal d2"><img class="tile-img" src="images/gallery/g07.jpg" alt="Nude nails with gold-foil ombre tips" loading="lazy"><figcaption class="cap"><b>Gold Flake</b><span>Ombre Nails</span></figcaption></figure>
+    <figure class="tile tall reveal d3"><img class="tile-img" src="images/gallery/g13.jpg" alt="Glossy red pedicure in monogram sandals" loading="lazy"><figcaption class="cap"><b>Red Pedicure</b><span>Gel Toes</span></figcaption></figure>
+    <figure class="tile reveal"><img class="tile-img" src="images/gallery/g09.jpg" alt="Pink shimmer gel nails" loading="lazy"><figcaption class="cap"><b>Pink Shimmer</b><span>Gel Nails</span></figcaption></figure>
+    <figure class="tile reveal d1"><img class="tile-img" src="images/gallery/g01.jpg" alt="Milky nude almond nails" loading="lazy"><figcaption class="cap"><b>Milky Nude</b><span>Almond Gel</span></figcaption></figure>
+    <figure class="tile tall reveal d2"><img class="tile-img" src="images/gallery/g06.jpg" alt="Bronzed glam salon make up, side profile" loading="lazy"><figcaption class="cap"><b>Bronzed Glam</b><span>Salon Make Up</span></figcaption></figure>
+    <figure class="tile reveal d3"><img class="tile-img" src="images/gallery/g12.jpg" alt="Classic red almond gel nails" loading="lazy"><figcaption class="cap"><b>Classic Red</b><span>Almond Gel</span></figcaption></figure>
+    <figure class="tile reveal"><img class="tile-img" src="images/gallery/g03.jpg" alt="Sculpted brows paired with volume lashes" loading="lazy"><figcaption class="cap"><b>Brows &amp; Lashes</b><span>Shape &amp; Set</span></figcaption></figure>
+    <figure class="tile reveal d1"><img class="tile-img" src="images/gallery/g02.jpg" alt="Sky-blue almond gel nails" loading="lazy"><figcaption class="cap"><b>Sky Blue</b><span>Almond Gel</span></figcaption></figure>
+  </div>
+  <p class="gallery-note reveal">✦ Follow more of Bernice's work on <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> ✦</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="sec-head reveal">
+    <div class="kicker">Kind Words</div>
+    <h2>What clients say</h2>
+    <p>A few words from the studio. Replace these with your own real reviews whenever you're ready.</p>
+  </div>
+  <div class="quotes">
+    <div class="quote reveal">
+      <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg></span>
+      <p>“My lashes have never looked so natural and full. The studio is so calming, I genuinely look forward to every visit.”</p>
+      <div class="by"><span class="av" style="background:linear-gradient(135deg,#E7A0A8,#A13A52)">M</span><div><b>Maria</b><span>Russian Volume</span></div></div>
+    </div>
+    <div class="quote reveal d1">
+      <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg></span>
+      <p>“Bernice takes her time and the detail shows. My nails lasted weeks and looked flawless the whole time.”</p>
+      <div class="by"><span class="av" style="background:linear-gradient(135deg,#D4A574,#7E2E42)">R</span><div><b>Rachel</b><span>Gel-Acrygel Set</span></div></div>
+    </div>
+    <div class="quote reveal d2">
+      <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.7z"/></svg></span>
+      <p>“Booked a lash lift before my holiday and woke up ready every morning. Cosy spot, lovely service, will be back!”</p>
+      <div class="by"><span class="av" style="background:linear-gradient(135deg,#C19463,#6B3A4A)">S</span><div><b>Steph</b><span>Lash Lift &amp; Tint</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <div class="sec-head reveal">
+    <div class="kicker">Reserve Your Seat</div>
+    <h2>Book an appointment</h2>
+    <p>Choose your treatment, then pick a date &amp; time that suits you. You'll get instant confirmation and a friendly reminder before your visit.</p>
+  </div>
+
+  <div class="book-wrap reveal">
+    <aside class="book-aside">
+      <div class="script">Hello lovely,</div>
+      <h3>Let's get you booked in</h3>
+      <p>Booking takes under a minute. Pick a service to see Bernice's live availability, with no back-and-forth and no waiting to hear back.</p>
+      <ol class="steps">
+        <li><span class="sn">1</span><div><b>Choose your treatment</b><span>Select from the menu just here →</span></div></li>
+        <li><span class="sn">2</span><div><b>Pick a date &amp; time</b><span>Live availability, real slots only</span></div></li>
+        <li><span class="sn">3</span><div><b>Confirm &amp; relax</b><span>Instant confirmation + reminder</span></div></li>
+      </ol>
+      <div class="aside-foot">
+        <a href="https://wa.me/35699263588" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          Prefer to message? WhatsApp us
+        </a>
+        <a href="tel:+35699263588">
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          Or call +356 9926 3588
+        </a>
+      </div>
+    </aside>
+
+    <div class="book-main">
+      <div class="book-field">
+        <label for="svc">1 · Choose your treatment</label>
+        <div class="sel-wrap">
+          <select id="svc" aria-label="Choose a treatment">
+            <option value="">Choose a treatment…</option>
+            <optgroup label="Lash Extensions" data-cat="lashes">
+              <option data-cat="lashes" value="Classic Set — Full Set (€60)">Classic Set — Full Set (€60)</option>
+              <option data-cat="lashes" value="Classic Set — Infills (€50)">Classic Set — Infills (€50)</option>
+              <option data-cat="lashes" value="Light Volume / Hybrid — Full Set (€55)">Light Volume / Hybrid — Full Set (€55)</option>
+              <option data-cat="lashes" value="Light Volume / Hybrid — Infills (€45)">Light Volume / Hybrid — Infills (€45)</option>
+              <option data-cat="lashes" value="Russian Volume — Full Set (€70)">Russian Volume — Full Set (€70)</option>
+              <option data-cat="lashes" value="Russian Volume — Infills (€60)">Russian Volume — Infills (€60)</option>
+            </optgroup>
+            <optgroup label="Lashes &amp; Brows" data-cat="brows">
+              <option data-cat="lashes" value="Lash Lift &amp; Tint (€50)">Lash Lift &amp; Tint (€50)</option>
+              <option data-cat="brows" value="Eyebrow Waxing (€7)">Eyebrow Waxing (€7)</option>
+              <option data-cat="brows" value="Eyebrow Waxing + Tint (€10)">Eyebrow Waxing + Tint (€10)</option>
+              <option data-cat="brows" value="Upper Lip (€3)">Upper Lip (€3)</option>
+            </optgroup>
+            <optgroup label="Nails &amp; Toes" data-cat="nails">
+              <option data-cat="nails" value="Nails Full Set — Short/Medium (€50)">Nails Full Set — Short/Medium (€50)</option>
+              <option data-cat="nails" value="Nails Full Set — Long/XL (€60)">Nails Full Set — Long/XL (€60)</option>
+              <option data-cat="nails" value="Nails Infills — Short/Medium (€28)">Nails Infills — Short/Medium (€28)</option>
+              <option data-cat="nails" value="Nails Infills — Long/XL (€35)">Nails Infills — Long/XL (€35)</option>
+              <option data-cat="nails" value="Gel Toes (€20)">Gel Toes (€20)</option>
+            </optgroup>
+            <optgroup label="Make Up" data-cat="makeup">
+              <option data-cat="makeup" value="Salon Make Up (€40)">Salon Make Up (€40)</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="book-field" style="margin-bottom:14px">
+        <label>2 · Pick your date &amp; time</label>
+      </div>
+
+      <div id="cal-embed">
+        <!-- States rendered/swapped by JS -->
+        <div class="cal-state" id="calPrompt">
+          <div class="cs-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+          <h4>Choose a treatment to see availability</h4>
+          <p>Pick your service above and Bernice's live calendar will appear right here. Choose any open slot and you're booked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head reveal">
+    <div class="kicker">Find Us</div>
+    <h2>Visit the studio</h2>
+  </div>
+  <div class="contact">
+    <a class="ccard reveal" href="https://www.google.com/maps/search/?api=1&query=Mosta,+Malta" target="_blank" rel="noopener" style="display:block">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+      <h4>Location</h4>
+      <span>Mosta, Malta</span>
+      <span>Exact address shared on booking</span>
+    </a>
+    <div class="ccard reveal d1">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+      <h4>Call or Text</h4>
+      <a href="tel:+35699263588">+356 9926 3588</a>
+      <span><a href="https://wa.me/35699263588" target="_blank" rel="noopener">WhatsApp welcome</a></span>
+    </div>
+    <div class="ccard reveal d2">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <h4>Hours</h4>
+      <span>Mon–Sat · by appointment</span>
+      <span>Sun &amp; holidays · +€5</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-rule"></div>
+  <div class="fbrand">Beauty B</div>
+  <div class="fscript">by Bernice</div>
+  <div class="foot-social">
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://wa.me/35699263588" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    </a>
+    <a href="tel:+35699263588" aria-label="Call">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    </a>
+  </div>
+  <div class="thanks">Thank you for choosing Beauty B ♡</div>
+  <small>Mosta, Malta · +356 9926 3588</small>
+  <small style="margin-top:14px;opacity:.7">Online booking by Cal.com · prices &amp; details from the studio menu</small>
+</footer>
+
+<script>
+  /* ============================================================
+     CAL.COM BOOKING CONFIG  ←★ EDIT THIS BLOCK ONLY
+     ------------------------------------------------------------
+     1. Create a free account at https://cal.com  (choose the EU
+        data region when signing up to keep data in the EU).
+     2. Create one "Event Type" per category below and copy each
+        event's URL slug (the bit after your username) into
+        EVENTS. Example event URL:  cal.com/beautyb/lashes
+        →  username:"beautyb",  EVENTS.lashes:"lashes"
+     3. Put your username below. That's it — the calendar goes live.
+     ============================================================ */
+  const CAL = {
+    username: "beautyb",          // ←★ YOUR CAL.COM USERNAME (live: cal.eu/beautyb)
+    origin:   "https://cal.eu",   // EU instance — matches your cal.eu/beautyb booking page
+    brandColor: "#A13A52",
+    layout: "month_view",         // "month_view" | "week_view" | "column_view"
+    // Map each treatment category to its Cal event-type slug.
+    // Tip: 4 event types is plenty — the exact treatment is passed
+    // to Bernice automatically in the booking notes.
+    EVENTS: {
+      lashes: "lashes",   // lash extensions & lash lift
+      nails:  "nails",    // nail sets, infills, gel toes
+      brows:  "brows",    // brow wax / tint / upper lip
+      makeup: "makeup"    // salon make up
+    }
+  };
+
+  /* ---------- sticky nav ---------- */
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30));
+
+  /* ---------- mobile menu ---------- */
+  const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  burger.addEventListener('click',()=>{
+    const open=mm.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');burger.setAttribute('aria-expanded','false');}));
+
+  /* ---------- reveal on scroll ---------- */
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+  /* ---------- sparkles ---------- */
+  (function(){
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const star='<svg width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c1 6 5 11 12 12-7 1-11 6-12 12-1-6-5-11-12-12 7-1 11-6 12-12z"/></svg>';
+    const spots=[[8,18],[16,72],[42,12],[60,80],[78,28],[88,62],[30,88],[70,16],[50,44]];
+    spots.forEach((s,i)=>{
+      const d=document.createElement('div');
+      d.className='spark';
+      d.style.left=s[0]+'%';d.style.top=s[1]+'%';
+      d.style.animationDelay=(i*0.6)+'s';
+      d.style.transform='scale('+(0.5+Math.random()*0.9)+')';
+      d.innerHTML=star;
+      document.querySelector('.atmos').appendChild(d);
+    });
+  })();
+
+  /* ============================================================
+     CAL.COM INLINE EMBED
+     ============================================================ */
+  const calMount=document.getElementById('cal-embed');
+  let calLoaded=false;
+
+  function showState(html,extraClass){
+    calMount.innerHTML='<div class="cal-state '+(extraClass||'')+'">'+html+'</div>';
+  }
+
+  function notConfiguredState(){
+    showState(
+      '<div class="cs-ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>'+
+      '<h4>Booking calendar — almost ready</h4>'+
+      '<p>The online calendar switches on as soon as the Cal.com account is connected. In the meantime, message or call to book.</p>'+
+      '<div class="cal-setup-hint">Setup: add your Cal username in the <code>CAL</code> config near the bottom of <code>index.html</code>.</div>'+
+      '<div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;justify-content:center">'+
+        '<a class="btn btn-rose" href="https://wa.me/35699263588" target="_blank" rel="noopener">Book via WhatsApp</a>'+
+        '<a class="btn btn-ghost" href="tel:+35699263588">Call the studio</a>'+
+      '</div>'
+    );
+  }
+
+  function ensureCalScript(){
+    if(calLoaded)return;
+    /* Official Cal.com embed loader */
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, CAL.origin + "/embed/embed.js", "init");
+    Cal("init", { origin: CAL.origin });
+    calLoaded=true;
+  }
+
+  function renderCal(category, treatmentLabel){
+    if(!CAL.username){ notConfiguredState(); return; }
+    const slug=CAL.EVENTS[category]||CAL.EVENTS.lashes;
+    const calLink=CAL.username+"/"+slug;
+
+    // loading state
+    showState('<div class="cs-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" opacity=".25"/><path d="M21 12a9 9 0 0 0-9-9"/></svg></div><h4>Loading availability…</h4>','spin');
+
+    ensureCalScript();
+    // fresh container for the iframe (clear loading state)
+    calMount.innerHTML='';
+    Cal("inline", {
+      elementOrSelector:"#cal-embed",
+      calLink: calLink,
+      layout: CAL.layout,
+      config: {
+        layout: CAL.layout,
+        // pass the exact treatment so Bernice sees it on the booking
+        notes: treatmentLabel ? ("Requested treatment: "+treatmentLabel) : undefined
+      }
+    });
+    Cal("ui", {
+      hideEventTypeDetails:false,
+      layout: CAL.layout,
+      cssVarsPerTheme:{ light:{ "cal-brand": CAL.brandColor } },
+      styles:{ branding:{ brandColor: CAL.brandColor } }
+    });
+  }
+
+  /* service selector → swap the embedded calendar */
+  const svcSelect=document.getElementById('svc');
+  svcSelect.addEventListener('change',function(){
+    const opt=this.options[this.selectedIndex];
+    if(!this.value){
+      // reset to prompt
+      showState('<div class="cs-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01"/></svg></div><h4>Choose a treatment to see availability</h4><p>Pick your service above and the live calendar will appear right here.</p>');
+      return;
+    }
+    const category=opt.getAttribute('data-cat')||'lashes';
+    renderCal(category, this.value);
+    // bring the calendar into view on mobile
+    if(window.innerWidth<=900){ calMount.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+
+  /* If Cal isn't configured yet, hint that in the prompt area on first load */
+  if(!CAL.username){
+    // keep the friendly prompt, but make the call-to-action honest
+    document.getElementById('calPrompt').querySelector('p').innerHTML=
+      'Pick your service above to see the live calendar. <br><span style="font-size:.82em;color:var(--gold-ink)">(Studio note: connect the Cal.com account to switch on online booking.)</span>';
+  }
+</script>
+</body>
+</html>
